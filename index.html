@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Creations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      google.script.run
+        .withSuccessHandler(function(data) {
+          const output = document.getElementById('output');
+          if (data.length === 0) {
+            output.textContent = 'No data found.';
+            return;
+          }
+
+          // Display nicely formatted JSON (you can format as a table later)
+          output.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+        .getData();
+    </script>
+    <link rel="stylesheet" href="https://github.com/Parth420/Images/blob/33bebeeabfb6a91ab2744619acaff51e5f4cf15f/Shri%20Creations.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f7;
+            color: #5a2a4a;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .floral-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f9a8d4" d="M50 20c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm0 25c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z"/><path fill="%23f9a8d4" d="M50 5c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 35c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zM25 25c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm50 0c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z"/></svg>');
+            background-size: 200px;
+            opacity: 0.05;
+            animation: subtleFloat 25s infinite ease-in-out alternate;
+        }
+
+        @keyframes subtleFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(3deg); }
+        }
+        
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .product-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(249, 168, 212, 0.3);
+        }
+
+        @keyframes pulse-once {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 2s ease-in-out;
+        }
+
+        .floral-divider {
+            animation: wave 8s ease-in-out infinite alternate;
+        }
+        @keyframes wave {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(1.05); }
+        }
+        
+        .category-btn.active {
+            background-color: #f8c8dc;
+            color: #5a2a4a;
+            font-weight: 500;
+        }
+        
+        .floral-divider {
+            position: relative;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="%23D4AF37" d="M0,0 L100,0 L100,10 C80,20 20,20 0,10 Z" opacity="0.15"/></svg>') center bottom no-repeat;
+            background-size: 100% 100%;
+            margin: 3rem 0;
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll.delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-on-scroll.delay-2 {
+            transition-delay: 0.4s;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-pink-100 shadow-sm relative overflow-hidden transition-all duration-1000 hover:bg-pink-200/30">
+        <div class="absolute inset-0 floral-bg"></div>
+        <div class="container mx-auto px-4 py-8 relative z-10">
+            <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center">
+                    <img src="https://raw.githubusercontent.com/Parth420/Images/67d0641fcfe2a56f394c2e49becf9305c4a132d3/Shri_Creations-removebg-preview%20(1).png" class="w-64 h-64 mb-4">
+                    <h1 class="heading-font text-2xl font-bold text-pink-700 italic underline">Shri Creations - Purchase Catalog </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-100 to-pink-50 opacity-90"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-pink-800 mb-4 animate-on-scroll">Elegant Accessories for Every Occasion</h2>
+                <p class="text-lg text-pink-700 mb-8 animate-on-scroll delay-1">Discover our exquisite collection of handcrafted jewellery that complements your beauty</p>
+                <a href="https://wa.me/918655200535?text=Hi%20Shri%20Creations,%20I%20would%20like%20to%20place%20an%20order" 
+                   target="_blank"
+                   class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-200/50 inline-block animate-pulse-once">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        <div class="floral-divider"></div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Category Filters -->
+        <div class="mb-12">
+            <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center animate-on-scroll">Our Collections</h3>
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="category-btn active px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="all">All</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="maangtikka">Maangtikka</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="earcuffs">Ear Cuffs</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="nath">Nath</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="hair">Hair Accessories</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="earchain">Earchain</button>
+                <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="hand">Hand Accessories</button>
+            </div>
+        </div>
+
+        <!-- Price Filter and Sorting -->
+        <div class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="heading-font text-xl font-semibold text-pink-800 mb-4">Filter by Price</h3>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <select id="price-filter" class="px-4 py-2 rounded-lg border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                            <option value="all">All Prices</option>
+                            <option value="0-1000">Under ₹1000</option>
+                            <option value="1000-2000">₹1000 - ₹2000</option>
+                            <option value="2000-5000">₹2000 - ₹5000</option>
+                            <option value="5000+">Over ₹5000</option>
+                        </select>
+                        <button id="apply-filter" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition">
+                            Apply Filter
+                        </button>
+                        <button id="reset-filter" class="text-pink-500 hover:text-pink-700 font-medium py-2 px-4 rounded-lg border border-pink-200 transition">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="heading-font text-xl font-semibold text-pink-800 mb-4">Sort By</h3>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <select id="sort-option" class="px-4 py-2 rounded-lg border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                            <option value="default">Default</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="name-desc">Name: Z to A</option>
+                        </select>
+                        <button id="apply-sort" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition">
+                            Apply Sort
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products-container">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+        <div class="text-center mt-8">
+            <button id="view-all-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                View All Products
+            </button>
+        </div>
+    </main>
+
+    <!-- Rental Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="heading-font text-3xl font-semibold text-pink-800 mb-6 animate-on-scroll">Looking for Rental Jewellery?</h3>
+            <p class="text-lg text-pink-700 mb-8 max-w-2xl mx-auto animate-on-scroll delay-1">
+                Explore our exclusive collection of rental jewellery for special occasions at affordable prices.
+            </p>
+            <a href="rental.html" 
+               class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg inline-block">
+                View Rental Collection
+            </a>
+        </div>
+        <div class="floral-divider"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-pink-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-md mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center animate-on-scroll">Contact Us</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 p-4 bg-pink-50 rounded-lg">
+                            <div class="bg-pink-100 p-3 rounded-full">
+                                <i class="fas fa-phone-alt text-pink-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Phone</h4>
+                                <a href="tel:8655200535" class="text-pink-700 hover:text-pink-900">
+                                    8655200535
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-pink-50 rounded-lg">
+                            <div class="bg-pink-100 p-3 rounded-full">
+                                <i class="fab fa-instagram text-pink-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Instagram</h4>
+                                <a href="https://www.instagram.com/_shri_vastra_?igsh=c2xwMmJmZjEyOHl3&utm_source=qr" 
+                                   class="text-pink-700 hover:text-pink-900" target="_blank">
+                                    @shri_vastra_
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4 p-4 bg-pink-50 rounded-lg">
+                            <div class="bg-pink-100 p-3 rounded-full">
+                                <i class="fas fa-envelope text-pink-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Email</h4>
+                                <a href="mailto:moremanjiri71@gmail.com" class="text-pink-700 hover:text-pink-900">
+                                    moremanjiri71@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-pink-100 text-pink-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="heading-font text-lg font-semibold mb-4">Shri Creations - Be Beautiful Be You.</h4>
+                    <p class="text-sm">Handcrafted jewellery that celebrates femininity and elegance.</p>
+            </div>
+            <div class="border-t border-pink-200 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2025 Shri Creations. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+     <div id="product-list"></div>
+
+    <script>
+        // Product data
+        const products = [
+  {
+    "id": 1,
+    "name": "Ear Chain 1",
+    "price": 1000,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%201.jpg",
+    "description": ""
+  },
+  {
+    "id": 2,
+    "name": "Ear Chain 2",
+    "price": 2000,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%202.jpg",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "Ear Chain 3",
+    "price": 1400,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%203.jpg",
+    "description": ""
+  },
+  {
+    "id": 5,
+    "name": "Ear Chain 5",
+    "price": 1600,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%205.jpg",
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "Ear Chain 6",
+    "price": 1200,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%206.jpg",
+    "description": ""
+  },
+  {
+    "id": 7,
+    "name": "Ear Chain 7",
+    "price": 1600,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%207.jpg",
+    "description": ""
+  },
+  {
+    "id": 9,
+    "name": "Ear Chain 9",
+    "price": 1200,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%209.jpg",
+    "description": ""
+  },
+  {
+    "id": 10,
+    "name": "Ear Chain 10",
+    "price": 2000,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2010.jpg",
+    "description": ""
+  },
+  {
+    "id": 12,
+    "name": "Ear Chain 12",
+    "price": 800,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2012.jpg",
+    "description": ""
+  },
+  {
+    "id": 13,
+    "name": "Ear Chain 13",
+    "price": 1400,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2013.jpg",
+    "description": ""
+  },
+  {
+    "id": 15,
+    "name": "Ear Chain 15",
+    "price": 2000,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2015.jpg",
+    "description": ""
+  },
+  {
+    "id": 16,
+    "name": "Ear Chain 16",
+    "price": 600,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2016.jpg",
+    "description": ""
+  },
+  {
+    "id": 17,
+    "name": "Ear Chain 17",
+    "price": 1500,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2017.jpg",
+    "description": ""
+  },
+  {
+    "id": 18,
+    "name": "Ear Chain 18",
+    "price": 3500,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2018.jpg",
+    "description": ""
+  },
+  {
+    "id": 19,
+    "name": "Ear Chain 19",
+    "price": 2000,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2019.jpg",
+    "description": ""
+  },
+  {
+    "id": 32,
+    "name": "Ear Chain 20",
+    "price": 1700,
+    "category": "earchain",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/34b51c9ed2799f1f1e2db607fc10d7f2eec48fe2/Jewellery_Pics/Purchase/Ear%20Chain/Ear%20Chain%2020.jpg",
+    "description": ""
+  },
+  {
+    "id": 20,
+    "name": "Ear Cuffs 1",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%201.jpg",
+    "description": ""
+  },
+  {
+    "id": 21,
+    "name": "Ear Cuffs 2",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%202.jpg",
+    "description": ""
+  },
+  {
+    "id": 22,
+    "name": "Ear Cuffs 3",
+    "price": 5000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%203.jpg",   
+    "description": ""
+  },
+  {
+    "id": 23,
+    "name": "Ear Cuffs 4",
+    "price": 4000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%204.jpg",   
+    "description": ""
+  },
+  {
+    "id": 24,
+    "name": "Ear Cuffs 5",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%205.jpg",   
+    "description": ""
+  },
+  {
+    "id": 25,
+    "name": "Ear Cuffs 6",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%206.jpg",   
+    "description": ""
+  },
+  {
+    "id": 26,
+    "name": "Ear Cuffs 7",
+    "price": 5000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%207.jpg",   
+    "description": ""
+  },
+  {
+    "id": 27,
+    "name": "Ear Cuffs 8",
+    "price": 700,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%208.jpg",   
+    "description": ""
+  },
+  {
+    "id": 28,
+    "name": "Ear Cuffs 9",
+    "price": 2700,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%209.jpg",   
+    "description": ""
+  },
+  {
+    "id": 29,
+    "name": "Ear Cuffs 10",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%2010.jpg",  
+    "description": ""
+  },
+  {
+    "id": 30,
+    "name": "Ear Cuffs 11",
+    "price": 5000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%2011.jpg",  
+    "description": ""
+  },
+  {
+    "id": 31,
+    "name": "Ear Cuffs 12",
+    "price": 2300,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%2012.jpg",  
+    "description": ""
+  },
+  {
+    "id": 4,
+    "name": "Ear Cuffs 13",
+    "price": 1000,
+    "category": "earcuffs",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Ear%20Cuffs/Ear%20Cuffs%2013.jpg",  
+    "description": ""
+  },
+  {
+    "id": 33,
+    "name": "Hair Accessories 1",
+    "price": 1000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%201.jpg",   
+    "description": ""
+  },
+  {
+    "id": 34,
+    "name": "Hair Accessories 2",
+    "price": 2000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%202.jpg",   
+    "description": ""
+  },
+  {
+    "id": 35,
+    "name": "Hair Accessories 3",
+    "price": 2000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%203.jpg",   
+    "description": ""
+  },
+  {
+    "id": 36,
+    "name": "Hair Accessories 4",
+    "price": {
+      min: 800,
+      max: 1000
+    },
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%204.jpg",   
+    "description": ""
+  },
+  {
+    "id": 37,
+    "name": "Hair Accessories 5",
+    "price": 1000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%205.jpg",   
+    "description": ""
+  },
+  {
+    "id": 38,
+    "name": "Hair Accessories 6",
+    "price": 2000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%206.jpg",   
+    "description": ""
+  },
+  {
+    "id": 39,
+    "name": "Hair Accessories 7",
+    "price": 1000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%207.jpg",   
+    "description": ""
+  },
+  {
+    "id": 40,
+    "name": "Hair Accessories 8",
+    "price": 500,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%208.jpg",   
+    "description": ""
+  },
+  {
+    "id": 41,
+    "name": "Hair Accessories 9",
+    "price": 700,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%209.jpg",   
+    "description": ""
+  },
+  {
+    "id": 42,
+    "name": "Hair Accessories 10",
+    "price": 2000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2010.jpg",  
+    "description": ""
+  },
+  {
+    "id": 43,
+    "name": "Hair Accessories 11",
+    "price": 600,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2011.jpg",  
+    "description": ""
+  },
+  {
+    "id": 44,
+    "name": "Hair Accessories 12",
+    "price": 1200,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2012.jpg",  
+    "description": ""
+  },
+  {
+    "id": 45,
+    "name": "Hair Accessories 13",
+    "price": 700,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2013.jpg",  
+    "description": ""
+  },
+  {
+    "id": 46,
+    "name": "Hair Accessories 14",
+    "price": 3000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2014.jpg",  
+    "description": ""
+  },
+  {
+    "id": 47,
+    "name": "Hair Accessories 15",
+    "price": 3500,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2015.jpg",  
+    "description": ""
+  },
+  {
+    "id": 48,
+    "name": "Hair Accessories 16",
+    "price": {
+      min: 350,
+      max: 1000
+    },
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2016.jpg",  
+    "description": ""
+  },
+  {
+    "id": 49,
+    "name": "Hair Accessories 17",
+    "price": 5000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2017.jpg",  
+    "description": ""
+  },
+  {
+    "id": 50,
+    "name": "Hair Accessories 18",
+    "price": 1800,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2018.jpg",  
+    "description": ""
+  },
+  {
+    "id": 96,
+    "name": "Hair Accessories 19",
+    "price": 1500,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2019.jpg",  
+    "description": ""
+  },
+  {
+    "id": 75,
+    "name": "Hair Accessories 20",
+    "price": 1500,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2020.jpg",  
+    "description": ""
+  },
+  {
+    "id": 89,
+    "name": "Hair Accessories 21",
+    "price": 500,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2021.jpg",  
+    "description": ""
+  },
+  {
+    "id": 90,
+    "name": "Hair Accessories 22",
+    "price": 300,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2022.jpg",  
+    "description": ""
+  },
+  {
+    "id": 91,
+    "name": "Hair Accessories 23",
+    "price": 2000,
+    "category": "hair",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hair%20Accessories/Hair%2023.jpg",  
+    "description": ""
+  },
+  {
+    "id": 51,
+    "name": "Hand Accessories 1",
+    "price": 5000,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%201.jpg",   
+    "description": ""
+  },
+  {
+    "id": 52,
+    "name": "Hand Accessories 2",
+    "price": 5000,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%202.jpg",   
+    "description": ""
+  },
+  {
+    "id": 53,
+    "name": "Hand Accessories 3",
+    "price": 1000,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%203.jpg",   
+    "description": ""
+  },
+  {
+    "id": 54,
+    "name": "Hand Accessories 4",
+    "price": 700,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%204.jpg",   
+    "description": ""
+  },
+  {
+    "id": 55,
+    "name": "Hand Accessories 5",
+    "price": 1000,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%205.jpg",   
+    "description": ""
+  },
+  {
+    "id": 56,
+    "name": "Hand Accessories 6",
+    "price": 6000,
+    "category": "hand",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Hand%20Accessories/Hand%206.jpg",   
+    "description": ""
+  },
+  {
+    "id": 55,
+    "name": "Maangtikka 1",
+    "price": {
+      min: 300,
+      max: 800
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%201.jpg",     
+    "description": ""
+  },
+  {
+    "id": 56,
+    "name": "Maangtikka 2",
+    "price": {
+      min: 300,
+      max: 800
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%202.jpg",     
+    "description": ""
+  },
+  {
+    "id": 57,
+    "name": "Maangtikka 3",
+    "price": {
+      min: 300,
+      max: 800
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%203.jpg",     
+    "description": ""
+  },
+  {
+    "id": 58,
+    "name": "Maangtikka 4",
+    "price": {
+      min: 200,
+      max: 1000
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%204.jpg",     
+    "description": ""
+  },
+  {
+    "id": 60,
+    "name": "Maangtikka 6",
+    "price": {
+      min: 500,
+      max: 1400
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%206.jpg",     
+    "description": ""
+  },
+  {
+    "id": 61,
+    "name": "Maangtikka 7",
+    "price": {
+      min: 350,
+      max: 1000
+    },
+    "category": "maangtikka",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Maangtikka/Maangtikka%207.jpg",     
+    "description": ""
+  },
+  {
+    "id": 62,
+    "name": "Nath 1",
+    "price": 500,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%201.jpg",
+    "description": ""
+  },
+  {
+    "id": 63,
+    "name": "Nath 2",
+    "price": 800,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%202.jpg",
+    "description": ""
+  },
+  {
+    "id": 64,
+    "name": "Nath 3",
+    "price": 350,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%203.jpg",
+    "description": ""
+  },
+  {
+    "id": 65,
+    "name": "Nath 4",
+    "price": {
+      min: 400,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%204.jpg",
+    "description": ""
+  },
+  {
+    "id": 66,
+    "name": "Nath 5",
+    "price": {
+      min: 350,
+      max: 800
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%205.jpg",
+    "description": ""
+  },
+  {
+    "id": 67,
+    "name": "Nath 6",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%206.jpg",
+    "description": ""
+  },
+  {
+    "id": 68,
+    "name": "Nath 7",
+    "price": 500,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%207.jpg",
+    "description": ""
+  },
+  {
+    "id": 69,
+    "name": "Nath 8",
+    "price": {
+      min: 500,
+      max: 600
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%208.jpg",
+    "description": ""
+  },
+  {
+    "id": 70,
+    "name": "Nath 9",
+    "price": {
+       min: 250,
+       max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%209.jpg",
+    "description": ""
+  },
+  {
+    "id": 71,
+    "name": "Nath 10",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2010.jpg",
+    "description": ""
+  },
+  {
+    "id": 72,
+    "name": "Nath 11",
+    "price": {
+       min: 300,
+       max: 600
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2011.jpg",
+    "description": ""
+  },
+  {
+    "id": 73,
+    "name": "Nath 12",
+    "price": {
+      min: 150,
+      max: 400
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2012.jpg",
+    "description": ""
+  },
+  {
+    "id": 74,
+    "name": "Nath 13",
+    "price": {
+      min: 350,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2013.jpg",
+    "description": ""
+  },
+  {
+    "id": 76,
+    "name": "Nath 15",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2015.jpg",
+    "description": ""
+  },
+  {
+    "id": 77,
+    "name": "Nath 16",
+    "price": 700,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2016.jpg",
+    "description": ""
+  },
+  {
+    "id": 78,
+    "name": "Nath 17",
+    "price": {
+      min: 300,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2017.jpg",
+    "description": ""
+  },
+  {
+    "id": 79,
+    "name": "Nath 18",
+    "price": 800,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2018.jpg",
+    "description": ""
+  },
+  {
+    "id": 80,
+    "name": "Nath 19",
+    "price": 700,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2019.jpg",
+    "description": ""
+  },
+  {
+    "id": 81,
+    "name": "Nath 20",
+    "price": 800,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2020.jpg",
+    "description": ""
+  },
+  {
+    "id": 82,
+    "name": "Nath 21",
+    "price": 800,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2021.jpg",
+    "description": ""
+  },
+  {
+    "id": 83,
+    "name": "Nath 22",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2022.jpg",
+    "description": ""
+  },
+  {
+    "id": 84,
+    "name": "Nath 23",
+    "price": {
+      min: 500,
+      max: 800
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2023.jpg",
+    "description": ""
+  },
+  {
+    "id": 85,
+    "name": "Nath 24",
+    "price": 350,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2024.jpg",
+    "description": ""
+  },
+  {
+    "id": 86,
+    "name": "Nath 25",
+    "price": {
+      min: 600,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2025.jpg",
+    "description": ""
+  },
+  {
+    "id": 87,
+    "name": "Nath 26",
+    "price": {
+      min: 500,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2026.jpg",
+    "description": ""
+  },
+  {
+    "id": 88,
+    "name": "Nath 27",
+    "price": {
+      min: 400,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2027.jpg",
+    "description": ""
+  },
+  {
+    "id": 91,
+    "name": "Nath 30",
+    "price": {
+      min: 500,
+      max: 1000
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2030.jpg",
+    "description": ""
+  },
+  {
+    "id": 92,
+    "name": "Nath 31",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2031.jpg",
+    "description": ""
+  },
+  {
+    "id": 93,
+    "name": "Nath 32",
+    "price": 500,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2032.jpg",
+    "description": ""
+  },
+  {
+    "id": 94,
+    "name": "Nath 33",
+    "price": {
+      min: 400,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2033.jpg",
+    "description": ""
+  },
+  {
+    "id": 95,
+    "name": "Nath 34",
+    "price": 150,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2034.jpg",
+    "description": ""
+  },
+  {
+    "id": 97,
+    "name": "Nath 36",
+    "price": {
+      min: 500,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2036.jpg",
+    "description": ""
+  },
+  {
+    "id": 98,
+    "name": "Nath 37",
+    "price": {
+      min: 600,
+      max: 800
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2037.jpg",
+    "description": ""
+  },
+  {
+    "id": 99,
+    "name": "Nath 38",
+    "price": {
+      min: 600,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2038.jpg",
+    "description": ""
+  },
+  {
+    "id": 100,
+    "name": "Nath 39",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2039.jpg",
+    "description": ""
+  },
+  {
+    "id": 101,
+    "name": "Nath 40",
+    "price": {
+      min: 400,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2040.jpg",
+    "description": ""
+  },
+  {
+    "id": 102,
+    "name": "Nath 41",
+    "price": 350,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2041.jpg",
+    "description": ""
+  },
+  {
+    "id": 103,
+    "name": "Nath 42",
+    "price": {
+      min: 300,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2042.jpg",
+    "description": ""
+  },
+  {
+    "id": 104,
+    "name": "Nath 43",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2043.jpg",
+    "description": ""
+  },
+  {
+    "id": 105,
+    "name": "Nath 44",
+    "price": {
+      min: 500,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2044.jpg",
+    "description": ""
+  },
+  {
+    "id": 106,
+    "name": "Nath 45",
+    "price": 380,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2045.jpg",
+    "description": ""
+  },
+  {
+    "id": 107,
+    "name": "Nath 46",
+    "price": {
+      min: 400,
+      max: 500
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2046.jpg",
+    "description": ""
+  },
+  {
+    "id": 108,
+    "name": "Nath 47",
+    "price": {
+      min: 500,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2047.jpg",
+    "description": ""
+  },
+  {
+    "id": 109,
+    "name": "Nath 48",
+    "price": {
+      min: 600,
+      max: 700
+    },
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2048.jpg",
+    "description": ""
+  },
+  {
+    "id": 14,
+    "name": "Nath 49",
+    "price": 600,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2049.jpg",
+    "description": ""
+  },
+  {
+    "id": 11,
+    "name": "Nath 50",
+    "price": 700,
+    "category": "nath",
+    "image": "https://raw.githubusercontent.com/Parth420/Shri_Creations/98cbd86b61ffd6beb4a0f5d2b61bed2bc69543b0/Jewellery_Pics/Purchase/Nath/Nath%2050.jpg",
+    "description": ""
+  }
+];
+            
+
+        // Display products
+        let showingAll = false;
+        
+        function displayProducts(filter = 'all', showAll = false, priceRange = 'all', sortOption = 'default') {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            // Filter by category
+            let filteredProducts = filter === 'all' 
+                ? products 
+                : products.filter(product => product.category === filter);
+            
+            // Filter by price if specified
+            if (priceRange !== 'all') {
+                filteredProducts = filterByPrice(filteredProducts, priceRange);
+            }
+            
+            // Sort products
+            filteredProducts = sortProducts(filteredProducts, sortOption);
+            
+            // Determine how many to show
+            const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4);
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl';
+                productCard.innerHTML = `
+                    <div class="relative overflow-hidden h-64">
+                        <a href="${product.image}" target="_blank" rel="noopener noreferrer">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </a>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-lg text-pink-800">${product.name}</h3>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">${product.description}</p>
+                        <div class="flex justify-end">
+                            <span class="font-bold text-pink-700">
+                                ${typeof product.price === 'object' 
+                                    ? `₹${product.price.min}${product.price.min !== product.price.max ? ` - ₹${product.price.max}` : ''}`
+                                    : `₹${product.price}`}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        // Category filter functionality
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.getAttribute('data-category');
+                const priceRange = document.getElementById('price-filter').value;
+                const sortOption = document.getElementById('sort-option').value;
+                displayProducts(category, showingAll, priceRange, sortOption);
+            });
+        });
+
+        // View All button functionality
+        document.getElementById('view-all-btn').addEventListener('click', function() {
+            showingAll = !showingAll;
+            this.textContent = showingAll ? 'Show Less' : 'View All Products';
+            const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+            const priceRange = document.getElementById('price-filter').value;
+            const sortOption = document.getElementById('sort-option').value;
+            displayProducts(activeCategory, showingAll, priceRange, sortOption);
+        });
+
+        // Sorting functionality
+        function sortProducts(products, sortOption) {
+            switch(sortOption) {
+                case 'price-low':
+                    return [...products].sort((a, b) => {
+                        const priceA = typeof a.price === 'object' ? a.price.min : a.price;
+                        const priceB = typeof b.price === 'object' ? b.price.min : b.price;
+                        return priceA - priceB;
+                    });
+                case 'price-high':
+                    return [...products].sort((a, b) => {
+                        const priceA = typeof a.price === 'object' ? a.price.max : a.price;
+                        const priceB = typeof b.price === 'object' ? b.price.max : b.price;
+                        return priceB - priceA;
+                    });
+                case 'name-asc':
+                    return [...products].sort((a, b) => a.name.localeCompare(b.name));
+                case 'name-desc':
+                    return [...products].sort((a, b) => b.name.localeCompare(a.name));
+                default:
+                    return products;
+            }
+        }
+
+        document.getElementById('apply-sort').addEventListener('click', function() {
+            const sortOption = document.getElementById('sort-option').value;
+            const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+            const priceRange = document.getElementById('price-filter').value;
+            
+            let filteredProducts = activeCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === activeCategory);
+            
+            if (priceRange !== 'all') {
+                filteredProducts = filterByPrice(filteredProducts, priceRange);
+            }
+            
+            const sortedProducts = sortProducts(filteredProducts, sortOption);
+            displayProducts(activeCategory, showingAll, priceRange, sortOption);
+        });
+
+        // Price filter functionality
+        function filterByPrice(products, priceRange) {
+            if (priceRange === 'all') return products;
+            
+            const [min, max] = priceRange.split('-').map(Number);
+            
+            return products.filter(product => {
+                const priceMin = typeof product.price === 'object' ? product.price.min : product.price;
+                const priceMax = typeof product.price === 'object' ? product.price.max : product.price;
+                
+                if (priceRange === '5000+') {
+                    return priceMin >= 5000;
+                }
+                return priceMin <= max && priceMax >= min;
+            });
+        }
+
+        document.getElementById('apply-filter').addEventListener('click', function() {
+            const priceRange = document.getElementById('price-filter').value;
+            const sortOption = document.getElementById('sort-option').value;
+            const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+            
+            let filteredProducts = activeCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === activeCategory);
+            
+            if (priceRange !== 'all') {
+                filteredProducts = filterByPrice(filteredProducts, priceRange);
+            }
+            
+            const sortedProducts = sortProducts(filteredProducts, sortOption);
+            displayFilteredProducts(sortedProducts, showingAll);
+        });
+
+        document.getElementById('reset-filter').addEventListener('click', function() {
+            document.getElementById('price-filter').value = 'all';
+            document.getElementById('sort-option').value = 'default';
+            const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+            displayProducts(activeCategory, showingAll);
+        });
+
+        function displayFilteredProducts(filteredProducts, showAll = false) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4);
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl';
+                productCard.innerHTML = `
+                    <div class="relative overflow-hidden h-64">
+                        <a href="${product.image}" target="_blank" rel="noopener noreferrer">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </a>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-lg text-pink-800">${product.name}</h3>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">${product.description}</p>
+                        <div class="flex justify-end">
+                            <span class="font-bold text-pink-700">
+                                ${typeof product.price === 'object' 
+                                    ? `₹${product.price.min}${product.price.min !== product.price.max ? ` - ₹${product.price.max}` : ''}`
+                                    : `₹${product.price}`}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts('all', false, 'all', 'default');
+        });
+    </script>
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
