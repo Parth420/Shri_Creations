@@ -19,7 +19,7 @@
         })
         .getData();
     </script>
-    
+    <link rel="stylesheet" href="https://github.com/Parth420/Images/blob/33bebeeabfb6a91ab2744619acaff51e5f4cf15f/Shri%20Creations.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
@@ -35,14 +35,40 @@
         }
         
         .floral-bg {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23f8c8dc" d="M50 30c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 5c2.8 0 5 2.2 5 5s-2.2 5-5 5-5-2.2-5-5 2.2-5 5-5z"/><path fill="%23f8c8dc" d="M65 35c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zM35 35c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zM50 15c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3z"/></svg>');
-            background-size: 150px;
-            opacity: 0.1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f9a8d4" d="M50 20c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm0 25c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z"/><path fill="%23f9a8d4" d="M50 5c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 35c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zM25 25c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm50 0c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z"/></svg>');
+            background-size: 200px;
+            opacity: 0.05;
+            animation: subtleFloat 25s infinite ease-in-out alternate;
+        }
+
+        @keyframes subtleFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(3deg); }
         }
         
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(249, 168, 212, 0.3);
+        }
+
+        @keyframes pulse-once {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 2s ease-in-out;
+        }
+
+        .floral-divider {
+            animation: wave 8s ease-in-out infinite alternate;
+        }
+        @keyframes wave {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(1.05); }
         }
         
         .category-btn.active {
@@ -53,21 +79,41 @@
         
         .floral-divider {
             position: relative;
-            height: 30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path fill="%23f8c8dc" d="M0,0 L100,0 L100,5 C75,10 25,10 0,5 Z"/></svg>') center bottom no-repeat;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="%23D4AF37" d="M0,0 L100,0 L100,10 C80,20 20,20 0,10 Z" opacity="0.15"/></svg>') center bottom no-repeat;
             background-size: 100% 100%;
-            margin: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll.delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-on-scroll.delay-2 {
+            transition-delay: 0.4s;
         }
     </style>
 </head>
 <body class="min-h-screen">
     <!-- Header -->
-    <header class="bg-pink-100 shadow-sm relative overflow-hidden">
+    <header class="bg-pink-100 shadow-sm relative overflow-hidden transition-all duration-1000 hover:bg-pink-200/30">
         <div class="absolute inset-0 floral-bg"></div>
         <div class="container mx-auto px-4 py-8 relative z-10">
             <div class="flex flex-col items-center">
                 <div class="flex flex-col items-center">
-                    <img src="https://raw.githubusercontent.com/Parth420/Shri_Creations/cf94b144bc5b717e8b73fae0470b4cc17eed77ee/Assets/Shri%20Creations%20Logo_No%20Bg.png" class="w-64 h-64 mb-4">
+                    <img src="https://raw.githubusercontent.com/Parth420/Images/67d0641fcfe2a56f394c2e49becf9305c4a132d3/Shri_Creations-removebg-preview%20(1).png" class="w-64 h-64 mb-4">
                     <h1 class="heading-font text-2xl font-bold text-pink-700 italic underline">Shri Creations - Purchase Catalog </h1>
                 </div>
             </div>
@@ -79,11 +125,11 @@
         <div class="absolute inset-0 bg-gradient-to-r from-pink-100 to-pink-50 opacity-90"></div>
         <div class="container mx-auto px-4 py-16 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="heading-font text-4xl md:text-5xl font-bold text-pink-800 mb-4">Elegant Accessories for Every Occasion</h2>
-                <p class="text-lg text-pink-700 mb-8">Discover our exquisite collection of handcrafted jewellery that complements your beauty</p>
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-pink-800 mb-4 animate-on-scroll">Elegant Accessories for Every Occasion</h2>
+                <p class="text-lg text-pink-700 mb-8 animate-on-scroll delay-1">Discover our exquisite collection of handcrafted jewellery that complements your beauty</p>
                 <a href="https://wa.me/918655200535?text=Hi%20Shri%20Creations,%20I%20would%20like%20to%20place%20an%20order" 
                    target="_blank"
-                   class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg inline-block">
+                   class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-200/50 inline-block animate-pulse-once">
                     Order Now
                 </a>
             </div>
@@ -95,7 +141,7 @@
     <main class="container mx-auto px-4 py-8">
         <!-- Category Filters -->
         <div class="mb-12">
-            <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center">Our Collections</h3>
+            <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center animate-on-scroll">Our Collections</h3>
             <div class="flex flex-wrap justify-center gap-2 mb-8">
                 <button class="category-btn active px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="all">All</button>
                 <button class="category-btn px-4 py-2 rounded-full border border-pink-200 hover:bg-pink-100 transition" data-category="maangtikka">Maangtikka</button>
@@ -160,8 +206,8 @@
     <!-- Rental Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="heading-font text-3xl font-semibold text-pink-800 mb-6">Looking for Rental Jewellery?</h3>
-            <p class="text-lg text-pink-700 mb-8 max-w-2xl mx-auto">
+            <h3 class="heading-font text-3xl font-semibold text-pink-800 mb-6 animate-on-scroll">Looking for Rental Jewellery?</h3>
+            <p class="text-lg text-pink-700 mb-8 max-w-2xl mx-auto animate-on-scroll delay-1">
                 Explore our exclusive collection of rental jewellery for special occasions at affordable prices.
             </p>
             <a href="rental.html" 
@@ -177,7 +223,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-md mx-auto">
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center">Contact Us</h3>
+                    <h3 class="heading-font text-2xl font-semibold text-pink-800 mb-6 text-center animate-on-scroll">Contact Us</h3>
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4 p-4 bg-pink-50 rounded-lg">
                             <div class="bg-pink-100 p-3 rounded-full">
@@ -1410,6 +1456,23 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             displayProducts('all', false, 'all', 'default');
+        });
+    </script>
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
         });
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
